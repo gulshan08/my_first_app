@@ -1,0 +1,20 @@
+<%= nested_form_for @comment,url: comments_path(id: @post.id), remote: true, :html => {:class => "form-horizontal center" ,multipart:true} do |nf| %>
+      <div class="form-group">
+        <%= nf.label :comment,"Comment", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= nf.text_field :comment, class: "form-control" %>
+        </div>
+      </div>
+      <%= nf.fields_for :photos do |photo_form| %>
+
+      <div class="form-group">
+        <%= photo_form.label :photo_image,"photo", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%=photo_form.file_field :photo_image, class: "form-control" %>
+        </div>
+      </div>
+      <% end %>
+      <%= nf.link_to_add "Add photo", :photos %><br>
+
+      <%= nf.submit "Submit", class: "btn btn-default btn-primary" %>  
+ <% end %>

@@ -1,0 +1,4 @@
+<p>comment :<%=comment.comment%></p>
+<% comment.photos.each do |photo|%>
+  <%= image_tag photo.photo_image.url ,width: '100x100'%>
+<%end%>

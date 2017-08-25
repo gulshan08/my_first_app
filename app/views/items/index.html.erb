@@ -1,0 +1,31 @@
+<h1>items<h1>
+<% @items.each do |item| %>
+  <%= image_tag item.picture.url ,width: '100x100'%><br>
+  name:<%= item.name%><br>
+  price :$<%= item.price%><br>
+  <%= check_box_tag "#{item.name}",item.price, false, class: "check-price" %><br>
+<%end%>
+<%= form_tag charges_path do %>
+  <%= hidden_field_tag 'price_amount'%>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key]%>"
+          data-description="A month's subscription"
+          data-locale="auto">
+
+  </script>
+  <% end %>
+  <script type="text/javascript">
+      $('.check-price').click(function(){
+        var checked_inputes = $( "input:checked" )
+        var sum = 0
+        for(var i=0; i < checked_inputes.length; i++) {
+          sum = sum + parseInt(checked_inputes[i].value)
+        }
+        $('.stripe-button').attr('data-amount', sum)
+        $('#price_amount').val(sum);
+      });
+      
+  </script>
+
+
+

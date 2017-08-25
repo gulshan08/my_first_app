@@ -1,0 +1,10 @@
+<h1>Items</h1>
+<%= form_for @item do|item|%>
+	<%=item.label :picture%>
+	<%=item.file_field :picture%><br \><br \>
+	<%=item.label :price%>
+	<%=item.text_field :price%><br \><br \>
+	<%=item.label :name%>
+	<%=item.text_field :name%><br \><br \>
+	<%=item.submit "Save"%>
+<%end%>

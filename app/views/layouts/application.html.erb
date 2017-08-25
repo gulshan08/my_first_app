@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DemoPro</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'true' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'true' %>
+    <%#= javascript_include_tag  "application", "nested_form" %>
+  </head>
+
+  <body>
+  	<div class= 'container'>
+  		<%= render 'layouts/header'%>
+  		<%= render 'layouts/message'%>
+  		<%= yield %>		
+  	</div>
+    
+  </body>
+</html>

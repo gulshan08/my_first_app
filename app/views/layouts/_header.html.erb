@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Facebook</a>
+    </div>
+   
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) if user_signed_in? %>  
+
+      <%#= link_to 'Edit_user_account',  edit_account_path(@account) if @account.blank?%>
+      <br>
+      <%= current_user.username if @current_user.present? %>
+      <%= image_tag @account.upload_by_paperclip.url, width: '100x100' if @account.present? %>
+       <%= link_to 'Edit_user_account',  edit_account_path(@account) if @account.present?%>
+      
+   
+
+</nav>
+<%#= link_to 'Edit_user_account',  edit_account_path(@account) if @account.present?%>
